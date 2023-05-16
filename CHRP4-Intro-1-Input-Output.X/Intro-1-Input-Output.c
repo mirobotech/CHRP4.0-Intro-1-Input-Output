@@ -1,6 +1,6 @@
 /*==============================================================================
  Project: Intro-1-Input-Output          Activity: mirobo.tech/chrp4-intro-1
- Date:    May 4, 2023
+ Date:    May 16, 2023
  
  This introductory input and output programming activity for the mirobo.tech
  CHRP4 demonstrates pushbutton input, LED (bit) output, port (byte) output,
@@ -21,7 +21,7 @@
 // TODO Set linker code offset to '800' under "Additional options" pull-down.
 
 // The main function is required in every C program. The microcontroller begins
-// executing the program starting from the main function.
+// executing the program starting at the first line in the main function.
 
 int main(void)
 {
@@ -65,22 +65,23 @@ int main(void)
 
 /* Learn More -- Program Analysis Activities
  * 
- * 1. Analysing a program to understand its operation is an important skill to
- *    develop. Let's figure out how this program works. We can start by testing
- *    the program and observing what happens when it runs in our circuit board.
+ * 1. Analyzing a program to understand its operation is an important skill to
+ *    develop. Let's figure out how this program works! Start by testing the
+ *    program and observing what happens when it runs in your circuit board.
  *    Quickly press and release SW2 and watch what the light pattern does. How
- *    many lights flash? Next, press and hold SW2 and observe the light pattern.
- *    What happens to the pattern when you let go of SW2? Does the light pattern
- *    stop immediately?
+ *    many lights flash? How many times do they flash? Next, press and hold SW2
+ *    and observe the light pattern. Does the light pattern stop immediately
+ *    when you let go of SW2?
  * 
- *    Next, examine the program and try to match your observations of the light
- *    pattern with the program code. How many lights are controlled by the 
+ *    Now, examine the program and try to match your observations of the light
+ *    pattern to the program code. How many of the lights are controlled by the 
  *    pattern inside the curly braces following the SW2 'if' statement? If SW2
- *    is pressed will the entire light pattern continue until it is finished,
- *    or will it stop as soon as SW2 is released? Can you explain why that is?
+ *    is pressed should the entire light pattern continue until it is finished,
+ *    or should it stop as soon as SW2 is released? Can you explain why that is?
  * 
  * 2. Explain the difference between the statements: LED2 = 0; and LED2 = 1;
- *    How does making LED2 become 0 or 1 turn the LED on or off?
+ *    How does making LED2 become 0 or 1 in the code actually turn LED2 on or
+ *    off on the circuit board?
  * 
  * 3. Understanding how a circuit works is another important skill to develop
  *    in interfacing (controlling hardware with software). What voltage do you
@@ -88,30 +89,32 @@ int main(void)
  *    'LED2 = 0;' runs? What voltage do you expect the output to be when the
  *    statement 'LED2 = 1;' runs?
  * 
- *    If you have access to a voltmeter, you can confirm the output voltage.
- *    Try measuring across one of the LEDs as the program outputs a 0, and also
- *    when it outputs a 1. The voltage will change quickly so you may need to
- *    use a 'peak hold' feature if your multimeter has one, or slow down the
- *    light pattern by increasing the time delay in the program. Next, use the
+ *    If you have access to a voltmeter, you can use it confirm the output
+ *    voltage of the microcontroller in the circuit. Try measuring across one
+ *    of the LEDs as the program outputs a 0, and again when it outputs a 1.
+ *    The voltage will change quickly so you may need to use a 'peak hold' or
+ *    'max' feature if your multimeter has one, or slow down the light pattern
+ *    in your program by increasing the time delays. Next, refer to the 
  *    schematic to find one of the microcontroller pins that is connected to
  *    one of the LEDs, and measure between that microcontroller pin and the
  *    negative pin of battery connector BT1 as you run the program again.
  *    Compare your measurements. Which voltage matched your prediction? Can you
  *    explain why?
  * 
- * 4. The statement 'if(SW2 == 0)' uses two equal signs, while the statement
- *    'LED2 = 1;' uses a single equal sign. What operation is performed by a
+ * 4. The statement 'if(SW2 == 0)' contains two equal signs, while the statement
+ *    'LED2 = 1;' contains a single equal sign. What operation is performed by a
  *    statement using one equal sign? What operation is performed by a statement
  *    using two equal signs? How are the two operations different?
  * 
  * 5. Find the switch circuits on the schematic diagram. Why does the program
  *    code use the statement 'if(SW2 == 0)' to sense if a switch is pressed?
- *    Can you relate the voltage level for 0 to the switch circuit?
+ *    Can you use the schematic to explain why the input voltage on one of the
+ *    microcontroller's switch inputs will be low when the switch is pressed?
  *  
  * 6. The following code structure includes instructions that write to all of 
- *    the bits in the PORTC output latches (called LATC) directly. PORTC is
- *    connected to CHRP4's on-board LEDs. Let's try some new code to control
- *    the LEDs in a different way than the SW2 structure does.
+ *    the bits in the PORTC output latches (called LATC) directly. PORTC (LATC)
+ *    connects to CHRP4's on-board LEDs. Let's try some new code to control
+ *    the LEDs in a different way than the original SW2 output structure does.
  * 
  *    Copy and paste the following block of code underneath the existing SW2
  *    'if' structure in your program (paste it where shown by the code comment
@@ -151,14 +154,17 @@ int main(void)
         LED5 = 0;
 
  *    First, try pressing and releasing SW4 and SW5 one at a time. They should
- *    act the same way.
+ *    act the same way, turning their respective LEDs on when each switch is
+ *    pressed.
  * 
  *    Next, press and hold SW4 while pressing and releasing SW5. Does SW5 work
  *    as expected?
  * 
- *    Next, press and hold SW5 while pressing and releasing SW4. Does SW4 work
- *    as expected? Can you explain the difference in operation between the 'if'
- *    and 'while' structures making up the momentary button code.
+ *    Last, press and hold SW5 while pressing and releasing SW4. Does SW4 work
+ *    as expected?
+ * 
+ *    Can you explain the difference in operation between the 'if' and 'while'
+ *    structures making up the momentary button code.
  * 
  * 8. Let's explore logical conditions using 'if' statements. Replace the code
  *    added in step 7, above, with this 'nested if' code to make a logical AND
@@ -232,8 +238,8 @@ int main(void)
  * 
  *    You won't be able to see microsecond length LED flashes with your eyes,
  *    but you can measure them using an oscilloscope, or hear them if they are
- *    used to turn a piezo beeper on and off instead. Try the following code in
- *    your program:
+ *    used to turn a piezo beeper on and off. Try the following code in your
+ *    program:
  
         // Make a tone while SW5 is held
         if(SW5 == 0)
@@ -245,8 +251,8 @@ int main(void)
         }
 
  *    Try changing the delay values in both of the __delay_us(); functions.
- *    Does the pitch of the tone increase or decrease if the delay value is
- *    made smaller? Does the opposite happen if the delay is made larger?
+ *    Does the pitch of the tone increase or decrease if the delay values are
+ *    made smaller? Does the opposite happen if the delays are made larger?
  * 
  * 3. This code demonstrates a more compact way of 'toggling' the beeper output
  *    using a logical NOT operator '!'. Replace the code above, with this code:
@@ -276,25 +282,27 @@ int main(void)
  *    Test each tone by pressing each button individually. Next, press two or
  *    more buttons at the same time. Describe what you think the tone waveforms
  *    will look like when two or more buttons are held. (You can verify your
- *    prediction if you have access to an oscilloscope.)
+ *    prediction if you have access to an oscilloscope and connect it across
+ *    the piezo beeper's output resistor.)
  * 
  * 6. Use individual 'if' structures to simulate 'Start' and 'Stop' buttons for
- *    an industrial machine. Make LED D3 turn on when SW3 is pressed, have it
- *    stay on even after SW3 is released. Use another if structure for SW4 to 
- *    turn LED D3 off when pressed. Test your program to make sure it works.
+ *    an industrial machine. Use SW3 to turn LED D3 on when it is pressed, and
+ *    make LED D3 stay on even after SW3 is released. Use another if structure
+ *    for SW4 to turn LED D3 off when it is pressed. Test your program to make
+ *    sure that it works the way you expect it to.
  * 
  * 7. Running your program from activity 6, above, describe what happens when
- *    you both SW3 and SW4 are held. Does LED D3 stay on? If so, how does its
- *    brightness compare to when only SW3 is pressed and released? If it is 
- *    different, can you explain what part of the code causes it to change, and
- *    why it changes?
+ *    both SW3 and SW4 are held. Does LED D3 stay on? If so, how does its
+ *    brightness compare when both button are held to when only SW3 is pressed?
+ *    If the brightness is different, can you explain what part of the code is
+ *    causing it to change, and why it changes?
  * 
  * 8. As you might imagine, an industrial machine that is able to turn on even
  *    while its 'Stop' button is pressed represents a significant safety hazard.
  *    Using one or more of the logical conditional operators introduced in the
  *    analysis activities, above, modify your start-stop program to make it
- *    safer. SW3 should only turn LED D3 on if switch SW4 is not being pressed
- *    while switch SW3 is pressed.
+ *    safer. SW3 should only be able to turn LED D3 on if switch SW4 is not
+ *    being pressed at the same time.
  * 
  * 9. LED D1 is normally used to indicate that a program is running, but it can
  *    be controlled by your program as well. If you examine the CHRP4 schematic,
