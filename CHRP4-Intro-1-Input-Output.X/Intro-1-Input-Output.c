@@ -1,6 +1,6 @@
 /*==============================================================================
- Project: Intro-1-Input-Output          Activity: mirobo.tech/chrp4-intro-1
- Date:    May 16, 2023
+ Project: Intro-1-Input-Output          Activity: mirobo.tech/intro-1
+ Date:    August 11, 2023
  
  This introductory input and output programming activity for the mirobo.tech
  CHRP4 demonstrates pushbutton input, LED (bit) output, port (byte) output,
@@ -31,7 +31,7 @@ int main(void)
     
     // The code in this while loop repeats forever.
     while(1)
-	{
+    {
         // If SW2 is pressed, make a flashy light pattern
         if(SW2 == 0)
         {
@@ -265,7 +265,7 @@ int main(void)
         }
 
  *    One difference between this code and the code in activity 2, above, is the
- *    state of the BEEPER pin when SW5 is released. Will you know the state the
+ *    state of the BEEPER pin when SW5 is released. Will you know what state the
  *    BEEPER output will be in after this code runs? While one advantage of this
  *    method is less program code, can you think of one or more disadvantages of
  *    not knowing the output state of a pin when using code like this?
